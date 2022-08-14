@@ -2,6 +2,11 @@
 
 A curated list of geometric algebra resources, inspired by [awesome](https://github.com/sindresorhus/awesome) lists. Also see [pygae/awesome-geometric-algebra](https://github.com/pygae/awesome-geometric-algebra).
 
+### Links
+- [bivector.net](https://bivector.net) (Amazing hub for everything GA)
+- [ProjectiveGeometricAlgebra.org](http://projectivegeometricalgebra.org)
+- [What is the Inverse of a Vector?](https://mattferraro.dev/posts/geometric-algebra)
+
 ### Introductions
 
 - [Clifford Algebra: A visual introduction](https://slehar.wordpress.com/2014/03/18/clifford-algebra-a-visual-introduction/) (blog post)
@@ -29,9 +34,9 @@ A curated list of geometric algebra resources, inspired by [awesome](https://git
 - [From Vectors to Multivectors](https://www.youtube.com/playlist?list=PLQ6JJNfj9jD_H3kUopCXkvvGoZqzYOzsV) by **Nick Okamoto**, a 3-part intro on Youtube
 - [Let's remove Quaternions from every 3D Engine: Intro to Rotors from Geometric Algebra](https://www.youtube.com/watch?v=Idlv83CxP-8)
 - [A Bigger Mathematical Picture for Computer Graphics](https://www.youtube.com/watch?v=WZApQkDBr5o) by **Eric Lengyel**, 2012 keynote
-- [A Swift Introduction to Geometric Algebra](https://www.youtube.com/watch?v=60z_hpEAtD8) by ***sudgylacmoe**
-- [Addendum to A Swift Introduction to Geometric Algebra](https://www.youtube.com/watch?v=0bOiy0HVMqA) by ***sudgylacmoe**
-- [From Zero to Geo Series](https://www.youtube.com/playlist?list=PLVuwZXwFua-0Ks3rRS4tIkswgUmDLqqRy) by ***sudgylacmoe**
+- [A Swift Introduction to Geometric Algebra](https://www.youtube.com/watch?v=60z_hpEAtD8) by **sudgylacmoe**
+- [Addendum to A Swift Introduction to Geometric Algebra](https://www.youtube.com/watch?v=0bOiy0HVMqA) by **sudgylacmoe**
+- [From Zero to Geo Series](https://www.youtube.com/playlist?list=PLVuwZXwFua-0Ks3rRS4tIkswgUmDLqqRy) by **sudgylacmoe**
 - [Geometric Algebra Course](https://www.youtube.com/playlist?list=PLxo3PbygE0PLdFFy_2b02JAaUsleFW8py) by **David Geo Holmes**, JS implementation walkthrough
 - [PGA Tutorial SIBGRAPI2021 Series](https://www.youtube.com/playlist?list=PLsSPBzvBkYjxrsTOr0KLDilkZaw7UE2Vc) by **Bivector**
 - [Understanding Quaternions through Geometric Algebra](https://www.youtube.com/watch?v=eo2HNCTV78s) by **Jorge Rodriguez**
@@ -45,3 +50,5 @@ A curated list of geometric algebra resources, inspired by [awesome](https://git
 - [Geometric Algebra with Applications in Engineering](http://link.springer.com/book/10.1007/978-3-540-89068-3) by **Christian Perwass**
 - [Foundations of Geometric Algebra Computing](http://link.springer.com/book/10.1007/978-3-642-31794-1) by **Dietmar Hildenbrand**
 - [Space-Time Algebra](http://www.springer.com/us/book/9783319184128) by **David Hestenes**
+- [Geometric Algebra: An Algebraic System for Computer Games and Animation](https://link.springer.com/book/10.1007/978-1-84882-379-2) by **John Vince**
+- [Geometric Algebra for Computer Graphics](https://link.springer.com/book/10.1007/978-1-84628-997-2) by **John Vince**
