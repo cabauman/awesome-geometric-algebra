@@ -1,5 +1,14 @@
 # Geometric Algebra Cheat Sheet
 
+**The Cauchy-Schwarz Inequality**
+```math
+\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+```
+
+This sentence uses `$` delimiters to show math inline: $\sqrt{3x-1}+(1+x)^2$
+
+A∨B & A∧B
+
 A collection of links and snippets to resources, samples, answers, people, videos, etc. related to Geometric Algebra
 
 ### Links
@@ -17,8 +26,9 @@ A collection of links and snippets to resources, samples, answers, people, video
 
 ### Personal Favorites
 
+- [Projective Geometric Algebra Illuminated](https://www.amazon.com/Projective-Geometric-Algebra-Illuminated-Lengyel/dp/B0CXY8C72T) by **Eric Lengyel** (March 13, 2024)
 - [Normalization, Square Roots, and the Exponential and Logarithmic
- Maps in Geometric Algebras of Less than 6D](https://arxiv.org/pdf/2206.07496) by **STEVEN DE KENINCK** and **MARTIN ROELFS**
+ Maps in Geometric Algebras of Less than 6D](https://arxiv.org/pdf/2206.07496) by **Steven De Keninck** and **Martin Roelfs**
 - [ganja.js](https://github.com/enkimute/ganja.js) :: a GA generator in javascript 
 - [geometricalgebratutorial.com](https://geometricalgebratutorial.com/)
 - [Why can't you multiply vectors?](https://youtu.be/htYh-Tq7ZBI?si=tidAqGYDP98O1pay) + [3DVGA implementation](https://github.com/FreyaHolmer/Mathfs/tree/master/Runtime/Geometric%20Algebra) by **Freya Holmér**
@@ -53,11 +63,85 @@ A collection of links and snippets to resources, samples, answers, people, video
 
 ### Books
 
-- [Geometric Algebra for Physicists](http://geometry.mrao.cam.ac.uk/2007/01/geometric-algebra-for-physicists/) by **Chris Doran** and **Anthony Lasenby**
-- [Linear and Geometric Algebra](http://faculty.luther.edu/~macdonal/laga/index.html) and [Vector and Geometric Calculus](http://faculty.luther.edu/~macdonal/vagc/index.html) by **Alan Macdonald**
-- [Geometric Algebra For Computer Science, An Object Oriented Approach to Geometry](http://www.geometricalgebra.net/) by **Leo Dorst, Daniel Fontijne and Stephen Mann**
-- [Geometric Algebra with Applications in Engineering](http://link.springer.com/book/10.1007/978-3-540-89068-3) by **Christian Perwass**
-- [Foundations of Geometric Algebra Computing](http://link.springer.com/book/10.1007/978-3-642-31794-1) by **Dietmar Hildenbrand**
-- [Space-Time Algebra](http://www.springer.com/us/book/9783319184128) by **David Hestenes**
-- [Geometric Algebra: An Algebraic System for Computer Games and Animation](https://link.springer.com/book/10.1007/978-1-84882-379-2) by **John Vince**
-- [Geometric Algebra for Computer Graphics](https://link.springer.com/book/10.1007/978-1-84628-997-2) by **John Vince**
+- [Geometric Algebra for Physicists](http://geometry.mrao.cam.ac.uk/2007/01/geometric-algebra-for-physicists/) by **Chris Doran** and **Anthony Lasenby** (December 10, 2007)
+- [Linear and Geometric Algebra](https://web.archive.org/web/20230922112801/http://www.faculty.luther.edu/~macdonal/laga/index.html) and [Vector and Geometric Calculus](https://web.archive.org/web/20230922122837/http://www.faculty.luther.edu/~macdonal/vagc/index.html) by **Alan Macdonald**
+- [Geometric Algebra For Computer Science, An Object Oriented Approach to Geometry](http://www.geometricalgebra.net/) by **Leo Dorst, Daniel Fontijne and Stephen Mann** (April 6, 2007)
+- [Geometric Algebra with Applications in Engineering](http://link.springer.com/book/10.1007/978-3-540-89068-3) by **Christian Perwass** (2009)
+- [Foundations of Geometric Algebra Computing](http://link.springer.com/book/10.1007/978-3-642-31794-1) by **Dietmar Hildenbrand** (2013)
+- [Space-Time Algebra](http://www.springer.com/us/book/9783319184128) by **David Hestenes** (2015)
+- [Geometric Algebra: An Algebraic System for Computer Games and Animation](https://link.springer.com/book/10.1007/978-1-84882-379-2) by **John Vince** (2009)
+- [Geometric Algebra for Computer Graphics](https://link.springer.com/book/10.1007/978-1-84628-997-2) by **John Vince** (2008)
+
+
+
+## PGA
+
+### Vocabulary
+
+- Cl(3, 0, 1)
+- ideal norm
+- euclidean norm
+- study number
+- bi-reflection, quad-reflection
+- Pseudoscalar
+- basis vector
+- vector
+- basis blade
+- blade
+- grade
+- multivector
+- bivector, trivector, quadvector
+- rotor: for rotations
+- motor: translation + rotation; normalized even multivectors. Even means that they include both scalar (grade0) and bivector (grade2) parts (and a quadvector (grade4) part in the case of screw motion).
+- translator: A general translator in 3D PGA is ±1 + (xe₀₁ + ye₀₂ + ze₀₃)/2 to translate a distance of (x, y, z) in their respective directions. Since a translator's bivector part always has a norm of 0, the translator's norm comes entirely from the scalar, so if it's normalized it will always be either 1 or -1. As for the square root, the square root of a translator does indeed half the bivector part, but not the scalar part, which stays at 1 or -1.
+- rotor/motor sqrt: The square root of a motor in PGA is actually a special case of the bisector formula, where the mid-point/bisector of objects a and b is normalized(a + b). In the case of a motor square root, one of those objects is the identity motor, also known as 1.
+- simple bivectors (squares to a scalar) & rotors/motors (composed of 2 reflections)
+- non-simple bivector (squares to a study number) & rotors/motors (composed of 4 reflections aka screw motion)
+- rotor/motor log -> bivector
+- bivector exp -> rotor/motor
+- Scaling is not present in PGA but *uniform* scaling is in Conformal GA (CGA)
+- intuitive naming: rotate_point_around_line(P, L, theta)
+
+ ### Operations
+
+- inner product: Inner product acting on multivectors. For basis vectors gives the values as defined by the algebra
+- wedge product: Used for join in ordinary representations and meet in dual representations. Zero for parallel vectors. Orthogonal vectors don't simplify and are written with a shorthand notation. Orthogonal vectors anti-commute
+- geometric product: The ordinary product. For vectors can be expanded into a sum of inner and wedge product
+- Square: Ambiguous. Often AA or A~A which sometimes give the same result and sometimes don't
+- Inverse: The inverse of an element is defined such that multiplying it with the element results in 1. A left inverse is an inverse such that it results in 1 when multiplied from the left, and similarly for right inverses. Not every element has an inverse.
+- Division: A/B, Ambiguous. Can mean left or right multiplication by the inverse of B, which is sometimes but not always the same
+- Commutator: axb=ab-ba Zero if a and b commute under the geometric product. 2ab if they anti-commute
+- Grade Selection: Keeps only the grade n parts
+- Scalar Grade Selection: Same as Grade Selection with n=0. Keeps only the scalar part.
+- reverse: Reverses the order of basis vectors in products
+- dual: Gives a complementary element. For degenerate algebras the dual is zero. However we can still get a useful non-metric complement by assuming 
+ which is usually just called the dual too.
+- Vee Product: Used for meet in ordinary representations and join in dual representations. Usually implemented with the wedge product and taking duals
+
+
+### Rotors & Motors
+
+#### Circular Motion
+
+**Question**: Let's say you have two points p and q on the unit circle. You want to interpolate the circular motion between p and q, where the arc of motion is perpendicular to the unit circle. What ways are there of doing this in GA?
+
+**Answer**: Calling your two points a and b, and the center of the circle c, the arc-length parametrised (by alpha) motion is exp(0.5 * alpha * log((c&b)/(c&a))). (where & is the regressive product and * the geometric product). 
+
+read : 
+- c&b, c&a : lines from c to b and a
+- ratio of two lines = twice the rotor between them
+- log of that rotor is a bivector 
+- 0.5*alpha because we started from twice the rotor.
+
+**Question**: The centre of the circle needs to be found though
+The circle which the arc is contained in, has to meet the unit circle at a right angle.
+Basically, you need to find the quantity c, and then that should be OK.
+c would be the meet of the tangents to the unit circle at a and b, by elementary circle geometry.
+
+**Answer**: the tangents at a and b are given by (o&a)|a and (o&b)|b respectively (see my GAME2020 lecture 😉). This gives
+c = ((o&a)|a)^((o&b)|b) 
+https://enki.ws/ganja.js/examples/coffeeshop.html#gvPNXYoV7
+
+#### asdf
+
+Starting in 4D (e.g. 3DPGA or R4), the norm of a bivector (sqrt(B * ~B)) is no longer necessarily a scalar. Instead it'll end up being a Study number.
