@@ -83,13 +83,14 @@ A collection of links and snippets to resources, samples, answers, people, video
 - euclidean norm
 - study number
 - bi-reflection, quad-reflection
-- Pseudoscalar
-- basis vector
-- vector
-- basis blade
-- blade
-- grade
-- multivector
+- pseudoscalar
+- scalar: $s$
+- basis vector: $e_i$
+- vector: $a=a_1e_2+a_2e_2+\dots$ linear combindation of basis vectors
+- basis blade: $e_{ij\dots}$ product of basis vectors
+- blade: product of vectors
+- grade: how many basis vectors it is made of. A pure grade element can be a linear combination of identically graded basis blades. A mixed grade element can be a combination of differently graded basis blades
+- multivector: sum of elements of the algebra
 - bivector, trivector, quadvector
 - rotor: for rotations
 - motor: translation + rotation; normalized even multivectors. Even means that they include both scalar (grade0) and bivector (grade2) parts (and a quadvector (grade4) part in the case of screw motion).
@@ -104,19 +105,19 @@ A collection of links and snippets to resources, samples, answers, people, video
 
  ### Operations
 
-- inner product: Inner product acting on multivectors. For basis vectors gives the values as defined by the algebra
-- wedge product: Used for join in ordinary representations and meet in dual representations. Zero for parallel vectors. Orthogonal vectors don't simplify and are written with a shorthand notation. Orthogonal vectors anti-commute
-- geometric product: The ordinary product. For vectors can be expanded into a sum of inner and wedge product
-- Square: Ambiguous. Often AA or A~A which sometimes give the same result and sometimes don't
-- Inverse: The inverse of an element is defined such that multiplying it with the element results in 1. A left inverse is an inverse such that it results in 1 when multiplied from the left, and similarly for right inverses. Not every element has an inverse.
-- Division: A/B, Ambiguous. Can mean left or right multiplication by the inverse of B, which is sometimes but not always the same
-- Commutator: axb=ab-ba Zero if a and b commute under the geometric product. 2ab if they anti-commute
-- Grade Selection: Keeps only the grade n parts
-- Scalar Grade Selection: Same as Grade Selection with n=0. Keeps only the scalar part.
-- reverse: Reverses the order of basis vectors in products
-- dual: Gives a complementary element. For degenerate algebras the dual is zero. However we can still get a useful non-metric complement by assuming 
+- inner product: $a \cdot b$ Inner product acting on multivectors. For basis vectors gives the values as defined by the algebra
+- wedge product: $a \wedge b$ Used for join in ordinary representations and meet in dual representations. Zero for parallel vectors. Orthogonal vectors don't simplify and are written with a shorthand notation. Orthogonal vectors anti-commute
+- geometric product: $ab$ The ordinary product. For vectors can be expanded into a sum of inner and wedge product
+- Square: $A^2$ Ambiguous. Often AA or A~A which sometimes give the same result and sometimes don't
+- Inverse: $A^{-1}$, $AA^{-1}=1$ The inverse of an element is defined such that multiplying it with the element results in 1. A left inverse is an inverse such that it results in 1 when multiplied from the left, and similarly for right inverses. Not every element has an inverse.
+- Division: $A/B$, Ambiguous. Can mean left or right multiplication by the inverse of B, which is sometimes but not always the same
+- Commutator: $a \times b=ab-ba$ Zero if a and b commute under the geometric product. 2ab if they anti-commute
+- Grade Selection: $\langle A \rangle_n$ Keeps only the grade n parts
+- Scalar Grade Selection: $\langle A \rangle$ Same as Grade Selection with n=0. Keeps only the scalar part.
+- reverse: $\widetilde{e_1}$, $\widetilde{e_{123}}$, $(a+b)^~$ Reverses the order of basis vectors in products
+- dual: $A\star$ Gives a complementary element. For degenerate algebras the dual is zero. However we can still get a useful non-metric complement by assuming 
  which is usually just called the dual too.
-- Vee Product: Used for meet in ordinary representations and join in dual representations. Usually implemented with the wedge product and taking duals
+- Vee Product: $ a\vee b $ Used for meet in ordinary representations and join in dual representations. Usually implemented with the wedge product and taking duals
 
 
 ### Rotors & Motors
