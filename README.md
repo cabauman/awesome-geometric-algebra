@@ -1,9 +1,9 @@
 # Geometric Algebra Cheat Sheet
 
 **The Cauchy-Schwarz Inequality**
-```math
+$$
 \left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
-```
+$$
 
 This sentence uses `$` delimiters to show math inline: $\sqrt{3x-1}+(1+x)^2$
 
@@ -79,14 +79,15 @@ A collection of links and snippets to resources, samples, answers, people, video
 ### Vocabulary
 
 - Cl(3, 0, 1)
+- roto/glide reflection or transflection (translation + reflection) e.g. footsteps
 - ideal norm
-- euclidean norm
+- Euclidean norm
 - study number
 - bi-reflection, quad-reflection
 - pseudoscalar
 - scalar: $s$
 - basis vector: $e_i$
-- vector: $a=a_1e_2+a_2e_2+\dots$ linear combindation of basis vectors
+- vector: $a=a_1e_2+a_2e_2+\dots$ linear combination of basis vectors
 - basis blade: $e_{ij\dots}$ product of basis vectors
 - blade: product of vectors
 - grade: how many basis vectors it is made of. A pure grade element can be a linear combination of identically graded basis blades. A mixed grade element can be a combination of differently graded basis blades
@@ -95,7 +96,7 @@ A collection of links and snippets to resources, samples, answers, people, video
 - rotor: for rotations
 - motor: translation + rotation; normalized even multivectors. Even means that they include both scalar (grade0) and bivector (grade2) parts (and a quadvector (grade4) part in the case of screw motion).
 - translator: A general translator in 3D PGA is ±1 + (xe₀₁ + ye₀₂ + ze₀₃)/2 to translate a distance of (x, y, z) in their respective directions. Since a translator's bivector part always has a norm of 0, the translator's norm comes entirely from the scalar, so if it's normalized it will always be either 1 or -1. As for the square root, the square root of a translator does indeed half the bivector part, but not the scalar part, which stays at 1 or -1.
-- rotor/motor sqrt: The square root of a motor in PGA is actually a special case of the bisector formula, where the mid-point/bisector of objects a and b is normalized(a + b). In the case of a motor square root, one of those objects is the identity motor, also known as 1.
+- rotor/motor sqrt: The square root of a motor in PGA is actually a special case of the bisector formula, where the mid-point/bisector of objects a and b is normalized(a + b). In the case of a motor square root, one of those objects is the identity motor, also known as 1; sqrt(m)=(m+1).normalized() is just a special case of geometric_mean(a,b)=(a+b).normalized()
 - simple bivectors (squares to a scalar) & rotors/motors (composed of 2 reflections)
 - non-simple bivector (squares to a study number) & rotors/motors (composed of 4 reflections aka screw motion)
 - rotor/motor log -> bivector
@@ -120,13 +121,24 @@ A collection of links and snippets to resources, samples, answers, people, video
 - Vee Product: $ a\vee b $ Used for meet in ordinary representations and join in dual representations. Usually implemented with the wedge product and taking duals
 
 
+### Notes
+Applying the same reflection twice (2 identical mirrors) equals the identity map
+- Intersecting mirrors equals a rotation
+- parallel mirrors equals a translation
+- all Euclidean transformations can be constructed from 1-3 reflections (4+ not needed)
+
+For simple bivectors, exp just uses a version of Euler's formula
+- $\cos(t) + i\sin(t)$ when $i^2 = -1$
+- $\cosh(t) + i\sinh(t)$ when $i^2 = +1$
+- $1 + it$ when $i^2 = 0$
+
 ### Rotors & Motors
 
 #### Circular Motion
 
 **Question**: Let's say you have two points p and q on the unit circle. You want to interpolate the circular motion between p and q, where the arc of motion is perpendicular to the unit circle. What ways are there of doing this in GA?
 
-**Answer**: Calling your two points a and b, and the center of the circle c, the arc-length parametrised (by alpha) motion is exp(0.5 * alpha * log((c&b)/(c&a))). (where & is the regressive product and * the geometric product). 
+**Answer**: Calling your two points a and b, and the center of the circle c, the arc-length parametrized (by alpha) motion is `exp(0.5 * alpha * log((c&b)/(c&a)))`. (where & is the regressive product and * the geometric product). 
 
 read : 
 - c&b, c&a : lines from c to b and a
@@ -139,10 +151,88 @@ The circle which the arc is contained in, has to meet the unit circle at a right
 Basically, you need to find the quantity c, and then that should be OK.
 c would be the meet of the tangents to the unit circle at a and b, by elementary circle geometry.
 
-**Answer**: the tangents at a and b are given by (o&a)|a and (o&b)|b respectively (see my GAME2020 lecture 😉). This gives
-c = ((o&a)|a)^((o&b)|b) 
+**Answer**: the tangents at a and b are given by `(o&a)|a` and `(o&b)|b` respectively (see my GAME2020 lecture 😉). This gives
+`c = ((o&a)|a)^((o&b)|b)` 
 https://enki.ws/ganja.js/examples/coffeeshop.html#gvPNXYoV7
 
 #### asdf
 
 Starting in 4D (e.g. 3DPGA or R4), the norm of a bivector (sqrt(B * ~B)) is no longer necessarily a scalar. Instead it'll end up being a Study number.
+
+### Equations
+
+#### Lines
+
+**line_from_points(p1, p2)**
+p1&p2
+
+**line_from_point_and_dir(p, d)**
+p&(p+d)
+
+#### Planes
+
+**plane_from_points(p1, p2, p3)**
+p1&p2&p3
+
+**plane_from_point_and_dirs(p, d1, d2)**
+p&(p+d1)&(p+d2)
+
+**plane_from_points_and_dir(p1, p2, d)**
+p1&p2&(p1+d)
+
+**plane_from_point_and_line(p, l)**
+p&l
+
+**plane_from_equations(a, b, c, d)**
+ae1+be2+ce3-de0
+#### Intersections
+
+**intersect_line_plane(l, P)**
+$l\wedge{P}$
+
+**intersect_plane_plane(P1, P2)**
+$P1\wedge{P2}$
+
+**intersect_planes(P1, P2, P3)**
+$P1\wedge{P2}\wedge{P3}$
+
+#### Projections
+
+**project_point_onto_plane(p, P)**
+$P\cdot p*P$
+
+**project_line_onto_plane(l, P)**
+$P\cdot l*P$
+
+**project_point_onto_line(p, l)**
+$l\cdot p*l$
+
+#### Transformations
+
+**translate(x, y, z)**
+$\Large{e^{x*e01+y*e02+z*e03}}$
+
+rotate_euler(h, p, b)
+$\Large{e^{b*e12}*e^{p*e23}*e^{h*e13}}$
+
+rotate_axis_angle(x, y, z, a)
+$\Large{e^{a*x*e23+a*y*e13+a*z*e12}}$
+
+look_at(from, to, pole)
+$1 + (e1-from)*(to-from)$
+
+#### Apply Transformations
+
+transform point/direction/line/plane
+$M*a*~M$
+
+#### Split non-simple bivector into 2 simple bivectors
+$$
+\large{b_2=\frac{B\wedge{B}}{2B}, b_1=B-b_2}
+$$
+
+#### Slerp
+$$
+(B/A)^t*A=e^{t*\ln{B/A}}, M^t=e^{t\ln{M}}
+$$
+
