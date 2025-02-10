@@ -185,6 +185,7 @@ p&l
 
 **plane_from_equations(a, b, c, d)**
 ae1+be2+ce3-de0
+
 #### Intersections
 
 **intersect_line_plane(l, P)**
@@ -196,7 +197,27 @@ $P1\wedge{P2}$
 **intersect_planes(P1, P2, P3)**
 $P1\wedge{P2}\wedge{P3}$
 
+When two lines intersect, they are in a plane. Call that plane p. Now the intersection is (l1 . p)^(l2 . p)^p
+Note that in 2D PGA .. p is just 1 and it simplifies to a wedge. If you don't know p you can do p = l1 ^ e0 v l2
+
+Meet first line with plane at infinity, then join that infinite point with second line to make the plane that holds both lines. You could use any point on the first line, but all lines intersect the e0 plane so that's a convenient choice.
+
+https://discord.com/channels/607264339480674324/607264339480674326/1140063349904769124
+
+SDSA
+
+```
+function PGA2D_segments_intersect (p1,p2,q1,q2) {
+  var l1 = p1 & p2, l2 = q1 & q2;
+  if ( (l1 & q1)*(l1 & q2) < 0 && (l2 & p1)*(l2 & p2) < 0 ) return true;
+  return false;
+}
+```
+
+it forms the two lines that extend the segments, and then it checks if both end-points of one line are on opposite sides of the other, and then does that for both. `l1 & q1` gives a signed distance between `l1` and `q1`. If `q1` is on one side of `l1`, then the result is positive, and if on the other side, it's negative. If both joins were negative or both were positive, then they'd be on the same side of `l1`, and multiplying them together would cancel out their signs to give a positive result, which is not `< 0`. If they were on opposite sides, then they'd have opposite signs, and positive * negative = negative, which _is_ `< 0`.
 #### Projections
+
+Note* Also known to be division by P: (R · P)/P
 
 **project_point_onto_plane(p, P)**
 $P\cdot p*P$
@@ -233,6 +254,6 @@ $$
 
 #### Slerp
 $$
-(B/A)^t*A=e^{t*\ln{B/A}}, M^t=e^{t\ln{M}}
+\large(B/A)^t*A=e^{t*\ln{B/A}}, M^t=e^{t\ln{M}}
 $$
 
