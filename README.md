@@ -19,16 +19,14 @@ A collection of links and snippets to resources, samples, answers, people, video
 ### Introductions
 
 - [Clifford Algebra: A visual introduction](https://slehar.wordpress.com/2014/03/18/clifford-algebra-a-visual-introduction/) (blog post)
-- [Imaginary Numbers Are Not Real](http://geometry.mrao.cam.ac.uk/wp-content/uploads/2015/02/ImagNumbersArentReal.pdf) by **Stephen Gull**, **Anthony Lasenby**, and **Chris Doran**
+- [Imaginary Numbers Are Not Real](https://web.archive.org/web/20250506020843/https://geometry.mrao.cam.ac.uk/wp-content/uploads/2015/02/ImagNumbersArentReal.pdf) by **Stephen Gull**, **Anthony Lasenby**, and **Chris Doran**
 - [Oersted Medal Lecture 2002: Reforming the Mathematical Language of Physics](https://web.archive.org/web/20230615061305/http://geocalc.clas.asu.edu/pdf/OerstedMedalLecture.pdf) by **David Hestenes**
 - [A Survey of Geometric Algebra & Geometric Calculus](https://web.archive.org/web/20240616081346/https://faculty.luther.edu/~macdonal/GA&GC.pdf) by **Alan MacDonald**
 - [Geometric Algebra](http://arxiv.org/abs/1205.5935 "Geometric Algebra") by **Eric Chisolm**, good for learning the technical details
 
 ### Personal Favorites
 
-- [Projective Geometric Algebra Illuminated](https://www.amazon.com/Projective-Geometric-Algebra-Illuminated-Lengyel/dp/B0CXY8C72T) by **Eric Lengyel** (March 13, 2024)
-- [Normalization, Square Roots, and the Exponential and Logarithmic
- Maps in Geometric Algebras of Less than 6D](https://arxiv.org/pdf/2206.07496) by **Steven De Keninck** and **Martin Roelfs**
+- [Rotors: A practical introduction for 3D graphics](https://jacquesheunis.com/post/rotors/)
 - [ganja.js](https://github.com/enkimute/ganja.js) :: a GA generator in javascript 
 - [geometricalgebratutorial.com](https://geometricalgebratutorial.com/)
 - [Why can't you multiply vectors?](https://youtu.be/htYh-Tq7ZBI?si=tidAqGYDP98O1pay) + [3DVGA implementation](https://github.com/FreyaHolmer/Mathfs/tree/master/Runtime/Geometric%20Algebra) by **Freya Holmér**
@@ -63,6 +61,9 @@ A collection of links and snippets to resources, samples, answers, people, video
 
 ### Books
 
+- [Projective Geometric Algebra Illuminated](https://www.amazon.com/Projective-Geometric-Algebra-Illuminated-Lengyel/dp/B0CXY8C72T) by **Eric Lengyel** (March 13, 2024)
+- [Normalization, Square Roots, and the Exponential and Logarithmic
+ Maps in Geometric Algebras of Less than 6D](https://arxiv.org/pdf/2206.07496) by **Steven De Keninck** and **Martin Roelfs**
 - [Geometric Algebra for Physicists](http://geometry.mrao.cam.ac.uk/2007/01/geometric-algebra-for-physicists/) by **Chris Doran** and **Anthony Lasenby** (December 10, 2007)
 - [Linear and Geometric Algebra](https://web.archive.org/web/20230922112801/http://www.faculty.luther.edu/~macdonal/laga/index.html) and [Vector and Geometric Calculus](https://web.archive.org/web/20230922122837/http://www.faculty.luther.edu/~macdonal/vagc/index.html) by **Alan Macdonald**
 - [Geometric Algebra For Computer Science, An Object Oriented Approach to Geometry](http://www.geometricalgebra.net/) by **Leo Dorst, Daniel Fontijne and Stephen Mann** (April 6, 2007)
@@ -146,7 +147,7 @@ read :
 - log of that rotor is a bivector 
 - 0.5*alpha because we started from twice the rotor.
 
-**Question**: The centre of the circle needs to be found though
+**Question**: The center of the circle needs to be found though
 The circle which the arc is contained in, has to meet the unit circle at a right angle.
 Basically, you need to find the quantity c, and then that should be OK.
 c would be the meet of the tangents to the unit circle at a and b, by elementary circle geometry.
@@ -195,6 +196,13 @@ $P1\wedge{P2}$
 
 **intersect_planes(P1, P2, P3)**
 $P1\wedge{P2}\wedge{P3}$
+
+**intersect_lines(l1, l2)**
+When two lines intersect, they are in a plane. Call that plane `p`.
+(l1 . p)^(l2 . p)^p
+ if you don't know `p` you can do:
+p = l1 ^ e0 v l2
+Meet first line with plane at infinity, then join that infinite point with second line to make the plane that holds both lines. You could use any point on the first line, but all lines intersect the e0 plane so that's a convenient choice
 
 #### Projections
 
